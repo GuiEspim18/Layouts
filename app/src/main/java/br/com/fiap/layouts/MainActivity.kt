@@ -7,10 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -38,27 +42,89 @@ class MainActivity : ComponentActivity() {
                         .fillMaxWidth()
                         .fillMaxHeight()
                         .background(Color(0xFFCECECE))
-                        .shadow(elevation = 4.dp)
-                        .border(width = 4.dp, color = Color(0xFFF0F0F0))
-                        .padding(top = 35.dp),
                 ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Button(
-                            onClick = { /*TODO*/ },
-                            modifier = Modifier
-                                .offset(x = 0.dp, y = (-80).dp)
-                        ) {
-                          Text(text = "Click-me")  
-                        }
-                        Text(
-                            text = "Fiap",
-                            modifier = Modifier.align(Alignment.TopCenter),
-                        )
-                    }
+                    LayoutScreen()
                 }
             }
         }
     }
+}
+
+@Composable
+fun LayoutScreen() {
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+    ) {
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Button 1")
+        }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Button 2")
+        }
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Button 3")
+        }
+        Column (
+            verticalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+        ) {
+            Text(text = "Fiap")
+            Text(text = "Android")
+            Text(text = "Studio")
+            Row (
+                modifier = Modifier
+                    .background(Color.Gray)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.Bottom
+            ) {
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 4")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 5")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 6")
+                }
+                Column() {
+                    Button(onClick = { /*TODO*/ }) {
+                       Text(text = "Button 7")
+                    }
+                    Button(onClick = { /*TODO*/ }) {
+                       Text(text = "Button 8")
+                    }
+                    Button(onClick = { /*TODO*/ }) {
+                       Text(text = "Button 9")
+                    }
+                }
+            }
+            Row (
+                modifier = Modifier
+                    .background(Color.Magenta)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 7")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 8")
+                }
+                Button(onClick = { /*TODO*/ }) {
+                    Text(text = "Button 9")
+                }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun LayoutScreenPreview() {
+    LayoutScreen()
 }
